@@ -1,0 +1,64 @@
+<div class="container mt-5">
+<div class="row">
+  <div class="col-lg-6 offset-lg-3">
+
+    <div class="card">
+      <div class="card-body text-center">
+        <span class="titulo">{{ titulo | uppercase }}</span>
+        <!--Form-->
+        <form class="mt-3" [formGroup]="produtoForm" (ngSubmit)="agregarProduto()">
+
+          <div class="mb-3">
+            <input type="text" formControlName="produto" class="form-control form-control-lg" placeholder="Produto">
+
+            <!--Verificação do Form-->
+            <div class="text-danger"
+            *ngIf="produtoForm.get('produto')?.hasError('required')" >
+              <span>O nome do produto <strong>é obrigatório</strong></span>
+            </div>
+
+          </div>
+          <div class="mb-3">
+            <input type="text" formControlName="categoria" class="form-control form-control-lg" placeholder="Categoria">
+
+             <!-- Validação Form-->
+            <div class="text-danger"
+              *ngIf="produtoForm.get('categoria')?.hasError('required') && produtoForm.get('categoria')" >
+              <span>A categoria <strong>é obrigatória</strong></span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <input type="text" formControlName="location" class="form-control form-control-lg" placeholder="Localização">
+
+            <!-- Validação Form-->
+            <div class="text-danger"
+              *ngIf="produtoForm.get('location')?.hasError('required') && produtoForm.get('location')"
+              >
+              <span>A localização <strong>é obrigatória</strong></span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <input type="number" formControlName="price" class="form-control form-control-lg" placeholder="Preço">
+
+            <!-- Validação Form-->
+            <div class="text-danger"
+              *ngIf="produtoForm.get('price')?.hasError('required') && produtoForm.get('price')"
+              >
+              <span>O preço <strong>é obrigatório</strong></span>
+            </div>
+          </div>
+
+
+          <div class="mb-3">
+            <button routerLink="/" type="button" class="btn btn-secondary btn-lg float-start">Voltar</button>
+            <button type="submit" [disabled]="produtoForm.invalid" class="btn btn-success btn-lg float-end">Aceitar</button>
+          </div>
+        </form>
+        <!---->
+      </div>
+    </div>
+  </div>
+</div>
+</div>
